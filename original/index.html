@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Alphabet to Braille converter tool</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Add a short disclaimer at the top using Bootstrap's warning alert class that says "This website was created entirely by AI, single prompt, ChatGPT 3.5, <t:1679631051>" -->
+    <div class="alert alert-warning" role="alert">
+      This website was created entirely by AI (<a href="./prompt.txt"
+        >a single prompt</a
+      >) using ChatGPT 3.5,
+    </div>
+    <div class="container">
+      <h1 class="text-center mt-5">Alphabet to Braille converter tool</h1>
+      <p class="text-center mb-5">
+        This tool converts alphanumeric characters into their Braille
+        equivalents using Unicode endpoints from \u2800 to \u283F.
+      </p>
+      <div id="container1" class="d-flex justify-content-center">
+        <div id="inner-container1">
+          <label for="inp">Enter text:</label>
+          <textarea
+            id="inp"
+            class="form-control mb-3"
+            rows="3"
+            style="width: 300px"
+          ></textarea>
+          <label for="out">Output:</label>
+          <textarea
+            id="out"
+            class="form-control"
+            rows="3"
+            style="width: 300px"
+            readonly
+          ></textarea>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const brailleMap = {
+      a: "\u2801",
+      b: "\u2803",
+      c: "\u2809",
+      d: "\u2819",
+      e: "\u2811",
+      f: "\u280b",
+      g: "\u281b",
+      h: "\u2813",
+      i: "\u280a",
+      j: "\u281a",
+      k: "\u2805",
+      l: "\u2807",
+      m: "\u280d",
+      n: "\u281d",
+      o: "\u2815",
+      p: "\u280f",
+      q: "\u281f",
+      r: "\u2817",
+      s: "\u280e",
+      t: "\u281e",
+      u: "\u2825",
+      v: "\u2827",
+      w: "\u283a",
+      x: "\u282d",
+      y: "\u283d",
+      z: "\u2835",
+      " ": "\u2800",
+      1: "\u2801",
+      2: "\u2803",
+      3: "\u2809",
+      4: "\u2819",
+      5: "\u2811",
+      6: "\u280b",
+      7: "\u281b",
+      8: "\u2813",
+      9: "\u280a",
+      0: "\u281a",
+    };
+
+    function ascii_to_braille(text) {
+      let result = "";
+      for (let i = 0; i < text.length; i++) {
+        let char = text.charAt(i);
+        if (brailleMap[char.toLowerCase()]) {
+          result += brailleMap[char.toLowerCase()];
+        } else {
+          result += char;
+        }
+      }
+      return result;
+    }
+
+    document.getElementById("inp").addEventListener("input", function () {
+      let inputText = document.getElementById("inp").value;
+      let outputText = ascii_to_braille(inputText);
+      document.getElementById("out").value = outputText;
+    });
+  </script>
+</html>

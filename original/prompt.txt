@@ -1,0 +1,9 @@
+Write an entire website (index.html page) with the following components. If there is any confusion, first output the code, then ask follow-up questions about uncertain parts. The components are as followed:
+- A title of "Alphabet to Braille converter tool"
+- Bootstrap 4 CDN
+- A short description of what the website does
+- Encapsulate the following 2 elements in a centered and responsive flexbox (might need to use a div in a div to get this effect. ID of first div is "container1" and ID of second div is "inner-container1"
+- An multiline input element of id "inp", formatted with Bootstrap (modern design, 300px)
+- A read-only textarea element of id "out", fomratted with Bootstrap (modern design, 300px)
+- Add an event listener for when the "inp" changes, call the ascii_to_braille function, return its output and set it to the element of id "out"
+- For ascii_to_braille function, use the unicode endpoints from \u2800 to \u283F. In the function, include an object mapping from alphanumeric characters to braille. Note that some alphanumeric characters, such as "b" and "2" share the same unicode endpoint. 
